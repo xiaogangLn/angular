@@ -1,0 +1,223 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    nav{
+        width: 100%;
+        height: 50px;
+        background-color:rgba(63, 81, 181,1.0);
+        font-size: 30px;
+        color: white;
+        font-family: 仿宋;
+        font-weight: 600;
+        margin: auto;
+    }
+    nav ul{
+        margin-left: 20px;
+    }
+    ul {
+        list-style-type: none;
+    }
+
+    a {
+        color: #b63b4d;
+        text-decoration: none;
+    }
+    .accordion {
+        width: 100%;
+        max-width: 360px;
+        margin: 50px auto 20px;
+        background: 	#2980b9 ;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    .accordion .link {
+        font-size: 18px;
+        font-family: 仿宋;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+        padding: 15px 0px 15px;
+        color: #ffffff;
+        font-weight: 700;
+        border-bottom: 1px solid #CCC;
+        position: relative;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .accordion li:last-child .link {
+        border-bottom: 0;
+    }
+    .submenu {
+        display: none;
+        background: #1abc9c ;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .submenu li {
+        border-bottom: 1px solid #CCCCCC;
+    }
+
+    .submenu a {
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 12px;
+        -webkit-transition: all 0.25s ease;
+        -o-transition: all 0.25s ease;
+        transition: all 0.25s ease;
+    }
+
+    .submenu a:hover {
+        background: rgb(33, 150, 243);
+        color: #FFF;
+    }
+    #nav-tabs li a:hover{
+        background-color: #3498db;
+        color: #ffffff;
+    }
+    #nav-tabs li a{
+        color: #34495e ;
+    }
+    #nav-tabs{
+        border-bottom: 1px solid #c0c0c0;
+    }
+    #nav-tabs{
+        margin-top: 10px;
+    }
+</style>
+<header>
+    <nav>
+        <ul>
+            <li>xxx公司项目实时监管系统</li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+        <!--左侧工程条目导航-->
+        <div class="col-lg-2 col-md-2 col-xs-2" align="center">
+            <ul id="accordion" class="accordion">
+                <li >
+                    <div class="link" >一期工程跟进</div>
+                    <ul class="submenu">
+                        <li><a href="#">Photoshop</a></li>
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">Maquetacion web</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link">一期工程员工</div>
+                    <ul class="submenu">
+                        <li><a href="#">Javascript</a></li>
+                        <li><a href="#">jQuery</a></li>
+                        <li><a href="#">Frameworks javascript</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link">一期项目财务</div>
+                    <ul class="submenu">
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Dispositivos mobiles</a></li>
+                        <li><a href="#">Medios de escritorio</a></li>
+                        <li><a href="#">Otros dispositivos</a></li>
+                    </ul>
+                </li>
+                <li><div class="link">项目耗材</div>
+                    <ul class="submenu">
+                        <li><a href="#">Google</a></li>
+                        <li><a href="#">Bing</a></li>
+                        <li><a href="#">Yahoo</a></li>
+                        <li><a href="#">Otros buscadores</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function() {
+                    var Accordion = function(el, multiple) {
+                        this.el = el || {};
+                        this.multiple = multiple || false;
+
+                        // Variables privadas
+                        var links = this.el.find('.link');
+                        // Evento
+                        links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+                    }
+
+                    Accordion.prototype.dropdown = function(e) {
+                        var $el = e.data.el;
+                        $this = $(this),
+                                $next = $this.next();
+
+                        $next.slideToggle();
+                        $this.parent().toggleClass('open');
+
+                        if (!e.data.multiple) {
+                            $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                        };
+                    }
+
+                    var accordion = new Accordion($('#accordion'), false);
+                });
+            </script>
+        </div>
+        <!--工程内容-->
+        <div class="col-lg-10 col-md-10 col-xs-10" align="center">
+            <!--工程内容导航-->
+            <div class="row">
+                <ul class="nav nav-tabs" id="nav-tabs">
+                    <li name="workPlanData"  class="active">
+                        <a target="workPlan" >现场工作进度</a>
+                    </li>
+                    <li name="workNameData">
+                        <a target="workName">现场人员分工</a>
+                    </li>
+                    <li>
+                        <a>开始时间：<span data-date-format="yyyy-mm-dd hh:ii">2017-09-30 21:05</span></a>
+                    </li>
+                    <li>
+                        <a>预计结束时间：<span data-date-format="yyyy-mm-dd hh:ii">2012-11-15 21:05</span></a>
+                    </li>
+                </ul>
+            </div>
+            <!--工程内容-->
+            <div class="row">
+                <div class="tab-content">
+                    <div name="workPlanData" class="tab-pane active " id="workPlan">
+                        <iframe src="#/contentPage/workPlan" width="100%" class="right-content" scrolling="no" frameborder="0" height="520px" name="workPlan"></iframe>
+                    </div>
+                    <div name="workNameData" class="tab-pane" id="workName">
+                        <iframe src="#/contentPage/workName" width="100%" class="right-content" scrolling="no" frameborder="0" height="520px" name="workName"></iframe>
+                    </div>
+                </div>
+                <script>
+                    /*内容部分两个iframe切换控制*/
+                    document.querySelector("[name=workNameData]").addEventListener("click",function (){
+                        this.classList.add("active");
+                        document.querySelector("div[name=workNameData]").classList.add("active");
+                        document.querySelector("[name=workPlanData]").classList.remove("active");
+                        document.querySelector("div[name=workPlanData]").classList.remove("active");
+                    },true)
+                    document.querySelector("[name=workPlanData]").addEventListener("click",function (){
+                        this.classList.add("active");
+                        document.querySelector("div[name=workPlanData]").classList.add("active");
+                        document.querySelector("[name=workNameData]").classList.remove("active");
+                        document.querySelector("div[name=workNameData]").classList.remove("active");
+                    },true)
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
